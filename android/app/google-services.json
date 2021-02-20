@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "269459182496",
+    "project_id": "groupdelta-c6f10",
+    "storage_bucket": "groupdelta-c6f10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269459182496:android:5dd25c2b14938e68b30ac5",
+        "android_client_info": {
+          "package_name": "com.groupdeltatestfront"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269459182496-a3aa7q94thbtsrhrgh3e0hv384qtlhc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNu8XScK-PGAmQuL-8bHl7u12TkEAHuoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269459182496-a3aa7q94thbtsrhrgh3e0hv384qtlhc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

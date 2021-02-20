@@ -10,9 +10,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-firebase/app": "^10.8.0",
+    "@react-native-firebase/database": "^10.8.0",
+    "@react-native-firebase/storage": "^10.8.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-gesture-handler": "^1.10.1",
+    "react-native-image-crop-picker": "^0.36.0",
     "react-navigation": "^4.4.3"
   },
   "devDependencies": {
