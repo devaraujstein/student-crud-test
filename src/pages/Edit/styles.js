@@ -55,38 +55,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 14,
     },
-    listContainer: {
-        position: 'relative',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 16,
-        backgroundColor: '#FFF',
-        width: 354,
-        height: 80
-    },
-    avatar: {
-        width: 50,
-        height: 50,
-        borderRadius: 50,
-        marginRight: 16,
-        marginLeft: 16
-    },
-    textName: {
-        fontWeight: 'bold',
-        fontSize: 18,
-        fontFamily: 'Roboto'
-    },
-    textAddress: {
-        fontWeight: 'bold',
-        fontSize: 12,
-        color: '#9BA4B4'
-    },
-    listUD: {
-        position: 'absolute',
-        flexDirection: 'row',
-        alignSelf: 'center',
-        right: 0
-    }
 });
 
 export default styles;
