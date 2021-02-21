@@ -1,6 +1,16 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    backContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    backText: {
+        color: 'black',
+        marginLeft: '28%',
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
     container: {
         flex: 1,
         alignItems: 'center',
@@ -13,7 +23,6 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginRight: 16,
         marginLeft: 16,
-        marginTop: 24,
         marginBottom: 24
     },
     photoUpload: {
@@ -30,7 +39,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 10
-        
     },
     textInput: {
         width: 354,
@@ -40,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         paddingLeft: 20
     },
-    button : {
+    button: {
         backgroundColor: '#6BA0FC',
         width: 177,
         height: 50,

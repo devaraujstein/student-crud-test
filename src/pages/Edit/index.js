@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import styles from './styles';
 
@@ -13,14 +13,12 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 
 const Edit = ({ navigation }) => {
-    
+
+    const currentImage = navigation.getParam('photo_url');
+
     const [image, setImage] = useState(navigation.getParam('photo_url'));
     const [name, setName] = useState(navigation.getParam('name'));
     const [address, setAddress] = useState(navigation.getParam('address'));
-
-    const goBack = () => {
-        NavigationService.navigate('Main');
-    }
 
     const takePicture = () => {
         ImagePicker.openCamera({
@@ -44,48 +42,71 @@ const Edit = ({ navigation }) => {
 
     const updateFire = async () => {
 
-        const uploadUri = image;
+        let filename = '';
+        let photo_url = '';
 
-        let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
+        if (((name.trim() === '') || (address.trim() === ''))) {
+            Alert.alert(
+                'Incomplete field',
+                'All fields must be filled'
+            )
+        } else {
+            if (currentImage !== image) {
 
-        // Adding 'timestamp' to the file name ( This way we can avoid overwriting some image with equal names)
+                const uploadUri = image;
 
-        const extension = filename.split('.').pop();
-        const nameFile = filename.split('.').slice(0, -1).join('.');
+                filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
 
-        filename = nameFile + Date.now() + '.' + extension;
+                const extension = filename.split('.').pop();
+                const nameFile = filename.split('.').slice(0, -1).join('.');
 
-        // Uploading the image
+                filename = nameFile + Date.now() + '.' + extension;
 
-        const task = storage().ref(`images/${filename}`).putFile(uploadUri);
+                const task = storage().ref(`images/${filename}`).putFile(uploadUri);
 
-        try {
-            await task;
-        } catch (error) {
-            console.log(error);
+                try {
+                    await task;
+                } catch (error) {
+                    console.log(error);
+                }
+
+                const ref = storage().ref(`images/${filename}`);
+                photo_url = await ref.getDownloadURL();
+
+            } else {
+
+                photo_url = currentImage;
+
+            }
+
+            try {
+                database().ref(`pupil/${navigation.getParam('key')}`).update({
+                    name,
+                    address,
+                    photo_url
+                });
+            } catch (error) {
+                console.log(error);
+            }
+            finally {
+                setName('');
+                setAddress('');
+                NavigationService.navigate('Main');
+            }
         }
+    }
 
-        const ref = storage().ref(`images/${filename}`);
-        const photo_url = await ref.getDownloadURL();
-
-        try {
-            database().ref(`pupil/${navigation.getParam('key')}`).update({
-                name,
-                address,
-                photo_url
-            });
-        } catch (error) {
-            console.log(error);
-        }
-        finally {
-            setName('');
-            setAddress('');
-            NavigationService.navigate('Main');
-        }
+    const goBack = () => {
+        NavigationService.navigate('Main');
     }
 
     return (
         <>
+            <View style={styles.backContainer}>
+                <Icon name="keyboard-backspace" size={40} color="#000" style={{ margin: 16 }} onPress={() => goBack()} />
+                <Text style={styles.backText}>Edit</Text>
+            </View>
+
             <View style={styles.container}>
 
                 <Image style={styles.imageAvatar} source={{ uri: image }} />
@@ -116,7 +137,7 @@ const Edit = ({ navigation }) => {
                     placeholder="Address" />
 
                 <TouchableOpacity style={styles.button} onPress={() => updateFire()}>
-                    <Text style={styles.text} >Atualizar</Text>
+                    <Text style={styles.text} >Update</Text>
                 </TouchableOpacity>
             </View>
         </>

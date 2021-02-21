@@ -15,7 +15,7 @@ const Menu = () => {
         <>
             <View style={styles.container}>
                 <TouchableOpacity style={styles.button} onPress={acessCrud}>
-                    <Text style={styles.text} >Acessar Alunos</Text>
+                    <Text style={styles.text} >Access Pupils</Text>
                 </TouchableOpacity>
             </View>
         </>

@@ -1,6 +1,16 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    backContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    backText: {
+        color: 'black',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginLeft: '18%'
+    },
     container: {
         flex: 1,
         alignItems: 'center',
@@ -30,7 +40,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 10
-        
+
     },
     textInput: {
         width: 354,
@@ -40,7 +50,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         paddingLeft: 20
     },
-    button : {
+    button: {
         backgroundColor: '#6BA0FC',
         width: 177,
         height: 50,
